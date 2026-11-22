@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Lettings Dashboard</h1>
+    <nav>
+      <a href="/">Dashboard</a>
+      <a href="/maintenance.html">Maintenance</a>
+      <a href="/reports.html" class="active">Reports</a>
+    </nav>
+    <span class="status"></span>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Tenancies in arrears</h2>
+        <label>Show
+          <select id="arrears-limit">
+            <option value="10">Top 10</option>
+            <option value="25">Top 25</option>
+            <option value="200">All</option>
+          </select>
+        </label>
+      </div>
+      <p id="arrears-summary" class="hint">Loading...</p>
+      <p id="arrears-error" class="message error" hidden></p>
+      <table id="arrears-table">
+        <thead>
+          <tr><th>Tenancy</th><th>Tenant</th><th class="num">Missed or short payments</th><th class="num">Total owed</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Repair SLA compliance</h2>
+        <label>Branch
+          <select id="sla-branch">
+            <option value="">All branches</option>
+          </select>
+        </label>
+      </div>
+      <p class="hint">On time means resolved within the target for its priority. Open jobs count as misses.</p>
+      <p id="sla-error" class="message error" hidden></p>
+      <table id="sla-table">
+        <thead>
+          <tr>
+            <th>Branch</th><th>Priority</th><th class="num">Target (days)</th>
+            <th class="num">Jobs</th><th class="num">On time</th><th>On-time rate</th><th class="num">Still open</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/api.js"></script>
+  <script src="/reports.js"></script>
+</body>
+</html>

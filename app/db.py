@@ -25,5 +25,8 @@ def db_cursor():
         with conn.cursor() as cur:
             yield cur
         conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
     finally:
         conn.close()
