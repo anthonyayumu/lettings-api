@@ -1,8 +1,3 @@
-"""Train the rent model and save it to models/rent_model.joblib.
-
-Run from the project root with the virtual environment active:
-    python -m ml.train_rent_model
-"""
 from datetime import datetime, timezone
 from pathlib import Path
 
